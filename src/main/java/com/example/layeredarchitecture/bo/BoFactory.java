@@ -3,7 +3,6 @@ package com.example.layeredarchitecture.bo;
 import com.example.layeredarchitecture.bo.impl.CustomerBoImpl;
 import com.example.layeredarchitecture.bo.impl.ItemBoImpl;
 import com.example.layeredarchitecture.bo.impl.PlaceOrderBoImpl;
-import com.example.layeredarchitecture.dao.custom.ItemDAO;
 
 public class BoFactory {
     private static BoFactory boFactory ;
@@ -18,7 +17,7 @@ public class BoFactory {
         }
     }
 
-    public Object getBo(BoTypes boTypes){
+    public SuperBo getBo(BoTypes boTypes){
         switch (boTypes){
             case CUSTOMER:
                 return new CustomerBoImpl();

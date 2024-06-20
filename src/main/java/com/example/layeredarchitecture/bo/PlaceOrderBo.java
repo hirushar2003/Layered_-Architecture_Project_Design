@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface PlaceOrderBo {
+public interface PlaceOrderBo extends SuperBo{
     public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException ;
 
     public ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException ;
