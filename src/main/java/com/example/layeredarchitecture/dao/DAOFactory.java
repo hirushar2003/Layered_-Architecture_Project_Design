@@ -5,6 +5,7 @@ import com.example.layeredarchitecture.bo.impl.PlaceOrderBoImpl;
 import com.example.layeredarchitecture.dao.custom.impl.CustomerDAOImpl;
 import com.example.layeredarchitecture.dao.custom.impl.ItemDAOImpl;
 import com.example.layeredarchitecture.dao.custom.impl.OrderDetailsDAOImpl;
+import com.example.layeredarchitecture.dao.custom.impl.QueryDAOImpl;
 
 public class DAOFactory {
 
@@ -32,7 +33,9 @@ public class DAOFactory {
                 return new OrderDetailsDAOImpl();
             case PLACE_ORDER:
                 return new PlaceOrderBoImpl();
+            case QUERY:
+                return new QueryDAOImpl();
+            default: return null ;
         }
-        return null;
     }
 }
