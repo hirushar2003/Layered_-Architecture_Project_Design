@@ -2,6 +2,9 @@ package com.example.layeredarchitecture.bo.impl;
 
 
 import com.example.layeredarchitecture.bo.ItemBo;
+import com.example.layeredarchitecture.dao.DAOFactory;
+import com.example.layeredarchitecture.dao.DAOTypes;
+import com.example.layeredarchitecture.dao.custom.CustomerDAO;
 import com.example.layeredarchitecture.dao.custom.ItemDAO;
 import com.example.layeredarchitecture.dao.custom.impl.ItemDAOImpl;
 import com.example.layeredarchitecture.model.ItemDTO;
@@ -9,9 +12,11 @@ import com.example.layeredarchitecture.model.ItemDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ItemBoImpl implements ItemBo {
-    ItemDAO itemDAO = new ItemDAOImpl();
+
+    public ItemDAO itemDAO = (ItemDAO) DAOFactory.getInstance().getDAO(DAOTypes.ITEM);
     @Override
     public ArrayList<ItemDTO> getAllItems() throws SQLException, ClassNotFoundException {
         return itemDAO.getAll();
