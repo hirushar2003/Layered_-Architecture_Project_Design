@@ -1,7 +1,7 @@
 package com.example.layeredarchitecture.controller;
 
-import com.example.layeredarchitecture.controller.bo.PlaceOrderBo;
-import com.example.layeredarchitecture.controller.bo.impl.PlaceOrderBoImpl;
+import com.example.layeredarchitecture.bo.PlaceOrderBo;
+import com.example.layeredarchitecture.bo.impl.PlaceOrderBoImpl;
 import com.example.layeredarchitecture.dao.custom.ItemDAO;
 import com.example.layeredarchitecture.dao.custom.OrderDAO;
 import com.example.layeredarchitecture.dao.custom.OrderDetailsDAO;
@@ -59,10 +59,9 @@ public class PlaceOrderFormController {
     public Label lblTotal;
     private String orderId;
 
-    OrderDAO orderDAO = new OrderDAOImpl();
-    ItemDAO itemDAO = new ItemDAOImpl();
-    OrderDetailsDAO orderDetailsDAO = new OrderDetailsDAOImpl();
-    PlaceOrderBo placeOrderBo = new PlaceOrderBoImpl();
+    public OrderDAO orderDAO = new OrderDAOImpl();
+    public OrderDetailsDAO orderDetailsDAO = new OrderDetailsDAOImpl();
+    public PlaceOrderBo placeOrderBo = new PlaceOrderBoImpl();
 
     public void initialize() throws SQLException, ClassNotFoundException {
 
@@ -356,7 +355,7 @@ public class PlaceOrderFormController {
                 item.setQtyOnHand(item.getQtyOnHand() - detail.getQty());
 
                 //update item
-                boolean b = itemDAO.update(new ItemDTO(item.getCode(), item.getDescription(), item.getUnitPrice(), item.getQtyOnHand()));
+                boolean b = placeOrderBo.updateItem(new ItemDTO(item.getCode(), item.getDescription(), item.getUnitPrice(), item.getQtyOnHand()));
 
                 if (!b) {
                     connection.rollback();

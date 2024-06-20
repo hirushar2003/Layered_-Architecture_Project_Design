@@ -1,4 +1,4 @@
-package com.example.layeredarchitecture.controller.bo;
+package com.example.layeredarchitecture.bo;
 
 import com.example.layeredarchitecture.model.CustomerDTO;
 import com.example.layeredarchitecture.model.ItemDTO;
@@ -27,4 +27,5 @@ public interface PlaceOrderBo {
     public boolean placeOrder(String orderId, LocalDate orderDate, String customerId, List<OrderDetailDTO> orderDetails);
 
     public ItemDTO findItem(String code);
+    public boolean updateItem(ItemDTO dto) throws SQLException, ClassNotFoundException;
 }
